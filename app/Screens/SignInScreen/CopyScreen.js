@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,TextInput,KeyboardAvoidingView,TouchableOpacity,Image,Alert} from 'react-native';
+import {View,Text,TextInput,TouchableOpacity,Image} from 'react-native';
 import styles from './Styles';
 
 export default class SignInScreen extends React.Component{
@@ -8,7 +8,7 @@ export default class SignInScreen extends React.Component{
     };
     constructor(props){
         super(props);
-        this.state={isOpenedPassword:false};
+        this.state={};
     }
     render(){
         return(
@@ -30,59 +30,37 @@ export default class SignInScreen extends React.Component{
                                 keyboardType={'email-address'}
                             />
                         </View>
-                            <View style={styles.FieldView}>
-                                <Text style={styles.FieldFontText}>
+                        <View style={styles.FieldView}>
+                            <Text style={styles.FieldFontText}>
                                 PASSWORD
-                                </Text>
+                            </Text>
                             <View style={styles.FieldPasswordView}>
                                 <TextInput
-                                    secureTextEntry={!this.state.isOpenedPassword}
                                     style={styles.FieldPasswordInput}
                                     placeholder={'Password'}
-
-
+                                    keyboardType={'visible-password'}
                                 />
-                                <TouchableOpacity
-                                    onPress={()=>{this.setState({isOpenedPassword:!this.state.isOpenedPassword})}}
-                                >
-                                    {(!this.state.isOpenedPassword &&
-                                        <Image
-                                            style={styles.FieldPasswordImage}
-                                            source={require('./materials/eyePasswordClose.png')}
-                                            resizeMode={'cover'}
-                                        />)}
-                                    {(this.state.isOpenedPassword &&
-                                        <Image
-                                            style={styles.FieldPasswordImage}
-                                            source={require('./materials/eyePasswordOpen.png')}
-                                            resizeMode={'cover'}
-                                        />)}
-                                </TouchableOpacity>
+                                <Image
+                                    style={styles.FieldPasswordImage}
+                                    source={require('./materials/eyePasswordClose.png')}
+                                    resizeMode={'cover'}
+                                />
                             </View>
                         </View>
                         <View style={styles.ButtonsNavigateView}>
-                            <TouchableOpacity
-                                onPress={()=>{this.props.navigation.navigate('Welcome')}}
-                            >
+                            <TouchableOpacity>
                                 <Text style={styles.ButtonsNavigateText}>
                                     ←BACK
                                 </Text>
                             </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={()=>{
-                                    Alert.alert('Signed');
-                                    this.props.navigation.navigate('UserProfile')
-                                }}
-                            >
+                            <TouchableOpacity>
                                 <Text style={styles.ButtonsNavigateText}>
                                     SIGN IN→
                                 </Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.ForgotPasswordView}>
-                            <TouchableOpacity
-                                onPress={()=>{this.props.navigation.navigate('ForgotPass')}}
-                            >
+                            <TouchableOpacity>
                                 <Text style={styles.ForgotPasswordText}>
                                     FORGOT PASSWORD
                                 </Text>

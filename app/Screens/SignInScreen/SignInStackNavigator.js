@@ -8,5 +8,6 @@ export default SignInStackNavigator = createStackNavigator({
     ForgotPass: ForgotPassScreen
 },
     {
-        initialRouteName: "SignIn"
+        initialRouteName: "SignIn",
+        headerMode: 'none'
     });
