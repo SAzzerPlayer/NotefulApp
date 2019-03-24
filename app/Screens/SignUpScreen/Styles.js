@@ -47,7 +47,8 @@ export default styles = StyleSheet.create({
     FieldInputText:{
         flex:1,
         fontSize:GlobalStyles.TextFontSize,
-
+        color:GlobalStyles.FontTextColor,
+        fontFamily:"Lato"
     },
     FieldPasswordView:{
         alignItems:'center',
@@ -57,7 +58,9 @@ export default styles = StyleSheet.create({
     },
     FieldPasswordInput:{
         flex:1,
-        fontSize:GlobalStyles.TextFontSize
+        fontSize:GlobalStyles.TextFontSize,
+        color:GlobalStyles.FontTextColor,
+        fontFamily:"Lato"
     },
     FieldPasswordImage:{
         height:GlobalStyles.iconSize,

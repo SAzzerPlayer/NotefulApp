@@ -39,13 +39,15 @@ export default styles = StyleSheet.create({
         marginBottom:15
     },
     FieldFontText:{
-        fontSize: GlobalStyles.TextFontSize,
+        fontSize: GlobalStyles.EyeCatchFontSize,
         color: GlobalStyles.FontEyeCatchColor,
     },
     FieldInputText:{
         flex:0.8,
         fontSize:GlobalStyles.TextFontSize,
-        fontFamily:'Lato'
+        fontFamily:'Lato',
+        color:GlobalStyles.FontTextColor,
+        minHeight:GlobalStyles.TextFontSize+2
     },
     ButtonsNavigateView:{
         flex:0.1,
@@ -66,7 +68,9 @@ export default styles = StyleSheet.create({
     },
     FieldPasswordInput:{
         flex:1,
-        fontSize:GlobalStyles.TextFontSize
+        fontSize:GlobalStyles.TextFontSize,
+        color:GlobalStyles.FontTextColor,
+        fontFamily:'Lato'
     },
     FieldPasswordImage:{
         height:GlobalStyles.iconSize,

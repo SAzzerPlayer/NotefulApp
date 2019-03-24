@@ -20,7 +20,7 @@ export default styles = StyleSheet.create({
     TitleFontTextSmall:{
         marginBottom:5,
         color: GlobalStyles.FontTextColor,
-        fontSize: GlobalStyles.TitleFontSize-4,
+        fontSize: GlobalStyles.EyeCatchFontSize,
         fontFamily: 'Lato-Light'
     },
     EyeCatchFontText:{

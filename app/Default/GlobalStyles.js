@@ -8,7 +8,7 @@ function getSize(diag){
         titleFont=20;
         textFont=10;
         buttonFont=20;
-        eyeCatchFont=12;
+        eyeCatchFont=16;
         iconSize=18;
         Alert.alert(String(diag));
     }
@@ -16,14 +16,14 @@ function getSize(diag){
         titleFont=20;
         textFont=12;
         buttonFont=20;
-        eyeCatchFont=12;
+        eyeCatchFont=16;
         iconSize=18;
     }
     else if(diag>5){
         titleFont=28;
         textFont=14;
         buttonFont=24;
-        eyeCatchFont=16;
+        eyeCatchFont=20;
         iconSize=24;
     }
     else{

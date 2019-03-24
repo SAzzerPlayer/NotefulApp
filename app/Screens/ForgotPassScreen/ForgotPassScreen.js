@@ -1,11 +1,70 @@
 import React from 'react';
-import {View,Text,TextInput,TouchableOpacity,Image} from 'react-native';
+import {View,Text,TextInput,AsyncStorage,TouchableOpacity,Image,Alert,KeyboardAvoidingView} from 'react-native';
 import styles from './Styles';
 
 export default class ForgotPassScreen extends React.Component{
+    _PutUserPassword = async (password,email) => {
+        await fetch('http://10.0.2.2:3000/users/update',
+            {
+                method:'PUT',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify(
+                    {
+                        password:password,
+                        email:email
+                    }
+                    )
+            });
+    };
+    _ChangePassword = () => {
+        let regPass = /^[a-zA-Z0-9'][a-zA-Z0-9' ]+[a-zA-Z0-9']?$/;
+        if(this.state.password.match(regPass) == null){
+            Alert.alert('Invalid password type');
+        }
+        else if(this.state.password.length < 8){
+            Alert.alert('Length of password is short');
+        }
+        else{
+            this._PutUserPassword(this.state.password,this.state.email);
+            Alert.alert("Successfull!");
+            this.props.navigation.navigate('Welcome');
+        }
+    };
+    _GetUser=async (email)=>{
+        let answer=null;
+        await fetch('http://10.0.2.2:3000/users/'+email)
+            .then((response)=>{return response.json()
+                .then((responseJson) => {
+                    answer = responseJson;
+                })});
+        return answer;
+    };
+    _CheckUser = async (email) => {
+        let data = await this._GetUser(email);
+        if(data.email==null){
+            Alert.alert("This email address hasn't existed!");
+        }
+        else{
+            this.setState({isRightEmail:true});
+        }
+    };
+    _CheckEmail=()=>{
+        let regEmail = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/;
+        if(this.state.email.match(regEmail)==null){
+            Alert.alert('Invalid email type');
+        }
+        else{
+            this._CheckUser(this.state.email);
+        }
+    };
     constructor(props){
         super(props);
-        this.state={isRightEmail:false,isOpenedPassword:false};
+        this.state={
+            isRightEmail:false,
+            isOpenedPassword:false,
+            email:String(),
+            password:String()
+        };
     }
     render(){
         return(
@@ -30,6 +89,10 @@ export default class ForgotPassScreen extends React.Component{
                                 <TextInput
                                     style={styles.FieldInputText}
                                     placeholder={'Email address'}
+                                    keyboardType={'email-address'}
+                                    placeholderTextColor={'grey'}
+                                    value={this.state.email}
+                                    onChangeText={(text)=>{this.setState({email:text})}}
                                 />
                             )}
                             {(this.state.isRightEmail &&
@@ -38,16 +101,19 @@ export default class ForgotPassScreen extends React.Component{
                                         secureTextEntry={!this.state.isOpenedPassword}
                                         style={styles.FieldPasswordInput}
                                         placeholder={'Password'}
+                                        placeholderTextColor={'grey'}
+                                        value={this.state.password}
+                                        onChangeText={(text)=>{this.setState({password:text})}}
                                     />
                                     <TouchableOpacity
                                         onPress={()=>{this.setState({isOpenedPassword:!this.state.isOpenedPassword})}}
                                     >
                                         {(!this.state.isOpenedPassword &&
-                                        <Image
-                                            style={styles.FieldPasswordImage}
-                                            source={require('./materials/eyePasswordClose.png')}
-                                            resizeMode={'cover'}
-                                        />)}
+                                            <Image
+                                                style={styles.FieldPasswordImage}
+                                                source={require('./materials/eyePasswordClose.png')}
+                                                resizeMode={'cover'}
+                                            />)}
                                         {(this.state.isOpenedPassword &&
                                             <Image
                                                 style={styles.FieldPasswordImage}
@@ -77,7 +143,7 @@ export default class ForgotPassScreen extends React.Component{
                                 </TouchableOpacity>)}
                             {(!this.state.isRightEmail &&
                                 <TouchableOpacity
-                                    onPress={()=>{this.setState({isRightEmail:true})}}
+                                    onPress={this._CheckEmail}
                                 >
                                 <Text style={styles.ButtonsNavigateText}>
                                     RECOVER→
@@ -85,10 +151,7 @@ export default class ForgotPassScreen extends React.Component{
                             </TouchableOpacity>)}
                             {(this.state.isRightEmail &&
                                 <TouchableOpacity
-                                    onPress={()=>{
-                                        this.setState({isRightEmail:false});
-                                        this.props.navigation.navigate('UserProfile')
-                                    }}
+                                    onPress={this._ChangePassword}
                                 >
                                     <Text style={styles.ButtonsNavigateText}>
                                         CHANGE→

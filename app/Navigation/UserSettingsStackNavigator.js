@@ -1,6 +1,6 @@
 import {createStackNavigator} from 'react-navigation';
-import UserSettingsScreen from './UserSettingsScreen';
-import GDPRScreen from '../GDPRScreen/GDPRScreen';
+import UserSettingsScreen from '../Screens/UserSettingsScreen/UserSettingsScreen';
+import GDPRScreen from '../Screens/GDPRScreen/GDPRScreen';
 
 export default UserSettingsStackNavigator = createStackNavigator({
     Settings:UserSettingsScreen,

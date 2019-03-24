@@ -45,7 +45,9 @@ export default styles = StyleSheet.create({
     },
     FieldInputText:{
         flex:0.65,
-        fontSize:GlobalStyles.TextFontSize
+        fontSize:GlobalStyles.TextFontSize,
+        color:GlobalStyles.FontTextColor,
+        fontFamily:'Lato'
 
     },
     FieldPasswordView:{
@@ -56,7 +58,9 @@ export default styles = StyleSheet.create({
     },
     FieldPasswordInput:{
         flex:1,
-        fontSize:GlobalStyles.TextFontSize
+        fontSize:GlobalStyles.TextFontSize,
+        color:GlobalStyles.FontTextColor,
+        fontFamily:"Lato"
     },
     FieldPasswordImage:{
         height:GlobalStyles.iconSize,

@@ -42,7 +42,7 @@ export default styles = StyleSheet.create({
         marginBottom:10
     },
     FieldTitleText:{
-        fontSize:GlobalStyles.TitleFontSize,
+        fontSize:GlobalStyles.EyeCatchFontSize,
         color:GlobalStyles.FontEyeCatchColor,
         fontFamily:"Lato"
     },

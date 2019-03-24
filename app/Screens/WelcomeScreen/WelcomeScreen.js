@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,TouchableOpacity,Image,Alert} from 'react-native';
+import {View,Text,TouchableOpacity,Image,Alert,AsyncStorage} from 'react-native';
 import styles from "./Styles";
 import GlobalStyles from '../../Default/GlobalStyles';
 
@@ -20,10 +20,16 @@ export default class WelcomeScreen extends React.Component{
         title:'Profile',
         header:null
     };
-
+    _ExistUserData = async() =>{
+        let data = JSON.parse(await AsyncStorage.getItem('User'));
+        if(data !== null){
+            this.props.navigation.navigate('UserProfile');
+        }
+    };
     constructor(props){
         super(props);
         this.state = {IsUserAuthed:false};
+        this._ExistUserData();
     }
     render() {
         return (

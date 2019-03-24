@@ -1,8 +1,8 @@
 import React from 'react';
 import {createStackNavigator} from 'react-navigation';
-import SignInStackNavigator from '../SignInScreen/SignInStackNavigator';
-import WelcomeScreen from './WelcomeScreen';
-import SignUpScreen from '../SignUpScreen/SignUpScreen'
+import SignInStackNavigator from './SignInStackNavigator';
+import WelcomeScreen from '../Screens/WelcomeScreen/WelcomeScreen';
+import SignUpScreen from '../Screens/SignUpScreen/SignUpScreen'
 export default WelcomeStackNavigator = createStackNavigator({
         Welcome: WelcomeScreen,
         SignIn: SignInStackNavigator,

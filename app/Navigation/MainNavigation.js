@@ -1,8 +1,8 @@
 import React from 'react';
 import {createSwitchNavigator} from 'react-navigation';
 import {View,Text} from 'react-native';
-import WelcomeStackNavigator from './Screens/WelcomeScreen/WelcomeStackNavigator';
-import UserTempStack from './Screens/UserTempScreen/UserTempStack';
+import WelcomeStackNavigator from './WelcomeStackNavigator';
+import UserTempStack from './UserTempStack';
 const MainNavigator = createSwitchNavigator({
     Authentication: WelcomeStackNavigator,
     UserProfile: UserTempStack

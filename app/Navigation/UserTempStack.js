@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from 'react-navigation';
-import UserTempScreen from './UserTempScreen';
-import UserSettingStackNavigator from '../UserSettingsScreen/UserSettingsStackNavigator';
+import UserTempScreen from '../Screens/UserTempScreen/UserTempScreen';
+import UserSettingStackNavigator from './UserSettingsStackNavigator';
 
 export default UserTempStack = createStackNavigator({
     UserTemp: UserTempScreen,

@@ -49,7 +49,9 @@ export default styles = StyleSheet.create({
     },
     FieldTextInput:{
         flex:1,
+        color: GlobalStyles.FontTextColor,
         fontSize: GlobalStyles.TextFontSize,
+        fontFamily:"Lato-Regular"
     },
     ButtonsNavigateTopView:{
         flex:0.1,
